@@ -100,7 +100,6 @@ def add_author_handler(message):
 def add_published_handler(message):
     try:
         book_data['year'] = int(message.text)
-        # метод из dbapi
         add()
         bot.reply_to(message, f"Книга добавлена (id)\n{repr(book_data)}")
     except ValueError:
@@ -149,6 +148,7 @@ def delete_published_handler(message):
 # /list
 def list_handler(message):
     # ну тут чисто обращение к бдшке и вывод
+    list()
     pass
 
 
@@ -159,14 +159,12 @@ def find_handler(message):
 
 
 def find_name_handler(message):
-    # добавь в базу данных объект message.text
     book_data['name'] = message.text
     msg = bot.send_message(message.from_user.id, "Введите автора:")
     bot.register_next_step_handler(msg, find_author_handler)
     
 
 def find_author_handler(message):
-    # добавь в базу данных объект message.text
     book_data['author'] = message.text
     msg = bot.send_message(message.from_user.id, "Введите год издания:")
     bot.register_next_step_handler(msg, find_published_handler)
@@ -233,14 +231,12 @@ def stats_handler(message):
 
 
 def stats_name_handler(message):
-    # добавь в базу данных объект message.text
     book_data['name'] = message.text
     msg = bot.send_message(message.from_user.id, "Введите автора:")
     bot.register_next_step_handler(msg, stats_author_handler)
     
 
 def stats_author_handler(message):
-    # добавь в базу данных объект message.text
     book_data['author'] = message.text
     msg = bot.send_message(message.from_user.id, "Введите год издания:")
     bot.register_next_step_handler(msg, stats_published_handler)
