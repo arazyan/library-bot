@@ -12,4 +12,4 @@ telegram bot for interacting with a library catalog
     ```git clone https://github.com/arazyan/library-bot/```
 
 2. Run following command to install required tools
-    ```pip install -r requirements.txt```
+    ```pip3 install -r requirements.txt```
